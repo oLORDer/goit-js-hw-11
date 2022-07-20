@@ -1,0 +1,46 @@
+body {
+
+}
+.search-form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(95, 95, 245);
+  height: 100px;
+  margin-bottom: 20px;
+}
+.search-form__input{
+  height: 50px;
+  width: 300px;
+  font-size: 30px;
+  margin-right: 30px;
+}
+.submit-button{
+  width: 70px;
+  height: 50px;
+  background-color: rgb(179, 115, 21);
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.photo-card {
+  width: 400px;
+}
+
+.btn {
+  width: 200px;
+  height: 50px;
+  background-color: rgb(122, 41, 41);
+  color: #fff;
+  display: block;
+  margin: 0 auto;
+}
+
+.is-hidden {
+  display: none;
+}
