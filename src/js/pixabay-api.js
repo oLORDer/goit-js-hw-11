@@ -7,7 +7,7 @@ export class Pixabay{
     constructor(){
         this.page = 1;
         this.q = null;
-        this.per_page = 20;
+        this.per_page = 40;
     }
 
     fetchPhotosByQuery() {
