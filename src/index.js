@@ -27,7 +27,7 @@ async function onSearchFormSubmit(event) {
       );
     }
 
-    if (response.data.total > 40) {
+    if (response.data.total > pixabay.per_page) {
       btn.classList.remove('is-hidden');
     }
     Notify.success(`Was founded: ${response.data.total} images`);
@@ -44,7 +44,7 @@ async function pagination(event) {
   const responce = await pixabay.fetchPhotosByQuery();
 
   try {
-    if (responce.data.hits.length < 40) {
+    if (responce.data.hits.length < pixabay.per_page) {
       Notify.warning('No more images');
       btn.classList.add('is-hidden');
     }
