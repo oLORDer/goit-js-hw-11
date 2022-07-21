@@ -27,7 +27,8 @@ async function onSearchFormSubmit(event) {
       );
     }
 
-    if (response.data.total > pixabay.per_page) {
+    if (pixabay.page * pixabay.per_page < response.data.totalHits) {
+      console.log('total:', response.data.total)
       btn.classList.remove('is-hidden');
     }
     Notify.success(`Was founded: ${response.data.total} images`);
@@ -38,19 +39,20 @@ async function onSearchFormSubmit(event) {
   }
 }
 
-async function pagination(event) {
+async function pagination() {
   pixabay.page += 1;
 
-  const responce = await pixabay.fetchPhotosByQuery();
+  const response = await pixabay.fetchPhotosByQuery();
 
   try {
-    if (responce.data.hits.length < pixabay.per_page) {
-      Notify.warning('No more images');
+    if (pixabay.page * pixabay.per_page >= response.data.totalHits) {
+      console.log('hits:', response.data.hits.length)
+      Notify.warning("We're sorry, but you've reached the end of search results.");
       btn.classList.add('is-hidden');
     }
     gallery.insertAdjacentHTML(
       'beforeend',
-      templateFunction(responce.data.hits)
+      templateFunction(response.data.hits)
     );
 
     lightbox.refresh();
