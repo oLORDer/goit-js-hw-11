@@ -21,5 +21,4 @@ export class Pixabay{
         })
             return axios.get(`${this.#BASE_URL}/?${urlSearchParams}`)
     }
-
 }
