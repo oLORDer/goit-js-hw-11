@@ -27,10 +27,12 @@ async function onSearchFormSubmit(event) {
       );
     }
 
+    if (response.data.total > 40) {
+      btn.classList.remove('is-hidden');
+    }
     Notify.success(`Was founded: ${response.data.total} images`);
     gallery.innerHTML = templateFunction(response.data.hits);
     lightbox.refresh();
-    btn.classList.remove('is-hidden');
   } catch (error) {
     Notify.failure(error.message);
   }
@@ -42,7 +44,7 @@ async function pagination(event) {
   const responce = await pixabay.fetchPhotosByQuery();
 
   try {
-    if (responce.data.hits.length === 0) {
+    if (responce.data.hits.length < 40) {
       Notify.warning('No more images');
       btn.classList.add('is-hidden');
     }
